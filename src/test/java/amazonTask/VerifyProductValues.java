@@ -25,10 +25,13 @@ public class VerifyProductValues {
         driver.get(ConfigurationReader.getProperty("url"));
     }
 
+
     @AfterMethod
     public void tearDownMethod(){
         Driver.closeDriver();
     }
+
+
 
     @Test
     public void verify_product_values_test(){
@@ -58,7 +61,7 @@ public class VerifyProductValues {
         String sizeText = size.getText();
 
         //8. find price
-        WebElement price = driver.findElement(By.xpath("(//span[.='34.165,80TL'])[2]"));
+        WebElement price = driver.findElement(By.xpath("(//div[@id='corePriceDisplay_desktop_feature_div']//span//following-sibling::*)"));
         String priceText = price.getText().replaceAll("\n",",");
 
         //9. find color
